@@ -37,8 +37,9 @@ public class PlayerController : MonoBehaviour
     public void OnCollisionEnter(Collision hit){
         if (hit.gameObject.CompareTag("ground")){
             isGrounded = true;
-        }else{
-            isGrounded = false;
         }
+    }
+     public void OnCollisionExit(Collision hit){
+        isGrounded = false;
     }
 }
