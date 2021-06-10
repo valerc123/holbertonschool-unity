@@ -15,6 +15,8 @@ public class CameraController : MonoBehaviour
     {
         transform.position = player.transform.position + offset;
         float horizontalInput = Input.GetAxis("Mouse X");
-        transform.Rotate(0, horizontalInput, 0);
+       // transform.Rotate(0, horizontalInput, 0);
+       // transform.RotateAround(player.transform.position, Vector3.up, horizontalInput);
+       // transform.LookAt(player.transform.position);
     }
 }
