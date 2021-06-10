@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class TimerTrigger : MonoBehaviour
 {
-    public GameObject timer;
+    public GameObject player;
     public Timer script;
     void Start()
     {
-        timer = GameObject.Find("Player");
+        player = GameObject.Find("Player");
     }
 
     void Update()
@@ -17,7 +17,7 @@ public class TimerTrigger : MonoBehaviour
     }
     void OnTriggerEnter(Collider other){
         if (other.tag == "Player"){
-            script = timer.GetComponent<Timer>();
+            script = player.GetComponent<Timer>();
             script.enabled = true;
         }
     }

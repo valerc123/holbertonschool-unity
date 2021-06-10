@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private float movementSpeed = 5f;
     private Vector3 move;
     public int jump;
-    public float jumpHeight = 6f;
+    public float jumpHeight = 15f;
     public bool isGrounded = false;
 
     void Start()
@@ -25,9 +25,9 @@ public class PlayerController : MonoBehaviour
     
         transform.position = transform.position + new Vector3(horizontalInput * movementSpeed * Time.deltaTime, 0,  verticalInput * movementSpeed * Time.deltaTime);
         transform.rotation = Quaternion.Euler(0,0,0);
-        if ((Input.GetKey(KeyCode.Space)) && (isGrounded == true)) {
-            gameObject.transform.Translate(0, 0.1f , 0);
-          //  rb.AddForce(Vector3.up * jumpHeight);
+        if (Input.GetKey(KeyCode.Space) && isGrounded == true){
+           // gameObject.transform.Translate(0, 1f , 0);
+           rb.AddForce(Vector3.up * jumpHeight);
         }
 
         if(transform.position.y <= -10){
@@ -38,8 +38,11 @@ public class PlayerController : MonoBehaviour
         if (hit.gameObject.CompareTag("ground")){
             isGrounded = true;
         }
+        else {
+           isGrounded = false;
+        }
     }
-     public void OnCollisionExit(Collision hit){
-        isGrounded = false;
-    }
+     
+
+     
 }
