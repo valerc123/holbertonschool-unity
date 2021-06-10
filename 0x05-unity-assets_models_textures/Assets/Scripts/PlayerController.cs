@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     
         transform.position = transform.position + new Vector3(horizontalInput * movementSpeed * Time.deltaTime, 0,  verticalInput * movementSpeed * Time.deltaTime);
         transform.rotation = Quaternion.Euler(0,0,0);
-        if (Input.GetKey(KeyCode.Space) && isGrounded == true){
+        if (Input.GetKey(KeyCode.Space)){
            // gameObject.transform.Translate(0, 1f , 0);
            rb.AddForce(Vector3.up * jumpHeight);
         }
