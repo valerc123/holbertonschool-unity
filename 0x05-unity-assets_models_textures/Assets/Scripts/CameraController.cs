@@ -5,18 +5,24 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public GameObject player;
+     private Transform playerTransform;     
+     private float yOffset = 2.0f;
+     private float zOffset = -7.0f;
+
     private Vector3 offset;
+   
+    public float turnspeed = 5.0f;
+
     void Start()
     {
-        offset = transform.position - player.transform.position;
+        playerTransform = player.transform;
+        offset = new Vector3(playerTransform.position.x, playerTransform.position.y + yOffset, playerTransform.position.z + zOffset);
     }
 
     void Update()
     {
-        transform.position = player.transform.position + offset;
-        float horizontalInput = Input.GetAxis("Mouse X");
-       // transform.Rotate(0, horizontalInput, 0);
-       // transform.RotateAround(player.transform.position, Vector3.up, horizontalInput);
-       // transform.LookAt(player.transform.position);
+        offset = Quaternion.AngleAxis(Input.GetAxis("Mouse X")*turnspeed, Vector3.up)*offset;
+        transform.position = playerTransform.position + offset;
+        transform.LookAt(playerTransform.position);
     }
 }

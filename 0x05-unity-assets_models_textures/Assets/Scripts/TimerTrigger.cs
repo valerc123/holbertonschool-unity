@@ -19,6 +19,7 @@ public class TimerTrigger : MonoBehaviour
         if (other.tag == "Player"){
             script = player.GetComponent<Timer>();
             script.enabled = true;
+            Debug.Log ("timer");
         }
     }
 }

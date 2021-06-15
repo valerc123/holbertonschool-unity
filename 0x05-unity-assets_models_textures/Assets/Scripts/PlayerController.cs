@@ -5,44 +5,95 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update\
-    public Rigidbody rb;
-    private float movementSpeed = 5f;
+  // Start is called before the first frame update\
+   [SerializeField] private float horizontalInput;
+    [SerializeField] private float verticalInput;
+    [SerializeField] private float gravity = 40f;
+    public Camera mainCamera;
+    private Vector3 camForward;
+    private Vector3 camRight;
+    private Vector3 movePlayer;
+    private Vector3 playerInput;
+   
+    private float movementSpeed = 7f;
     private Vector3 move;
-    public int jump;
-    public float jumpHeight = 15f;
-    public bool isGrounded = false;
+   
+    public float fallVelocity;
+    public float jumpForce;
+    //public bool isGrounded = false;
+
+    public CharacterController player;
 
     void Start()
     {
-       rb = GetComponent<Rigidbody>();
+       player = GetComponent<CharacterController>();    
     }
     // Update is called once per frame
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-    
-        transform.position = transform.position + new Vector3(horizontalInput * movementSpeed * Time.deltaTime, 0,  verticalInput * movementSpeed * Time.deltaTime);
-        transform.rotation = Quaternion.Euler(0,0,0);
-        if (Input.GetKey(KeyCode.Space)){
-           // gameObject.transform.Translate(0, 1f , 0);
-           rb.AddForce(Vector3.up * jumpHeight);
-        }
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
+        playerInput = new Vector3( horizontalInput, 0, verticalInput);
+        playerInput = Vector3.ClampMagnitude(playerInput, 1);
 
-        if(transform.position.y <= -10){
+        movePlayer = playerInput.x * camRight + playerInput.z * camForward;
+
+        movePlayer = movePlayer * movementSpeed ;
+
+        setGravity ();
+        PlayerJump();
+        
+        player.Move(movePlayer * Time.deltaTime);
+
+
+        camDirection();
+       
+       if(transform.position.y <= -10){
             transform.position = new Vector3(0,20,0);
         }
     }
-    public void OnCollisionEnter(Collision hit){
+
+    void camDirection()
+    {
+        camForward = mainCamera.transform.forward;
+        camRight = mainCamera.transform.right;
+
+        camForward.y = 0;
+        camRight.y = 0;
+
+        camForward = camForward.normalized;
+        camRight = camRight.normalized;
+    }
+
+
+    void PlayerJump()
+    {
+        if (player.isGrounded && Input.GetButtonDown("Jump"))
+        {
+            fallVelocity = jumpForce;
+            movePlayer.y = fallVelocity;
+        }
+    }
+     void setGravity()
+    {      
+        if (player.isGrounded)
+        {
+            fallVelocity = -gravity * Time.deltaTime;
+            movePlayer.y = fallVelocity;
+        }
+        else
+        {
+            fallVelocity -= gravity * Time.deltaTime;
+            movePlayer.y = fallVelocity;
+        }
+    }
+
+  /*  public void OnCollisionEnter(Collision hit){
         if (hit.gameObject.CompareTag("ground")){
             isGrounded = true;
         }
         else {
            isGrounded = false;
         }
-    }
-     
-
-     
-}
+    }*/
+ }
