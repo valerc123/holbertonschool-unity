@@ -24,9 +24,5 @@ public class bottoncontroller : MonoBehaviour
     {
         ButtonImage.sprite = Images[color];
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+ 
 }
