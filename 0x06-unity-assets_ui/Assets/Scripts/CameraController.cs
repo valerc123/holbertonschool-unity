@@ -13,16 +13,21 @@ public class CameraController : MonoBehaviour
    
     public float turnspeed = 5.0f;
 
+    public bool  isInverted;
+
     void Start()
     {
         playerTransform = player.transform;
-        offset = new Vector3(playerTransform.position.x, playerTransform.position.y + yOffset, playerTransform.position.z + zOffset);
+        offset = new Vector3(playerTransform.position.x , playerTransform.position.y + yOffset, playerTransform.position.z + zOffset);
     }
 
     void Update()
     {
         offset = Quaternion.AngleAxis(Input.GetAxis("Mouse X")*turnspeed, Vector3.up)*offset;
+        
         transform.position = playerTransform.position + offset;
         transform.LookAt(playerTransform.position);
     }
+
+
 }
