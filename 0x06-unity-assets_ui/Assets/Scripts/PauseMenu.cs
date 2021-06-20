@@ -11,21 +11,21 @@ public class PauseMenu : MonoBehaviour
     public Timer script;
     // Start is called before the first frame update
     void Start (){
-        script = player.GetComponent<Timer>();
+      script = player.GetComponent<Timer>();
     }
     void Update (){
-        if (Input.GetKeyDown(KeyCode.Escape)){
-            Pause();
-        }
+      if (Input.GetKeyDown(KeyCode.Escape)){
+          Pause();
+      }
     }
     public void Pause(){
-        script.enabled = false;
-        canvas.SetActive(true);
+      script.enabled = false;
+      canvas.SetActive(true);
     }
 
     public void Resume(){
-        script.enabled = true;
-        canvas.SetActive(false);
+      script.enabled = true;
+      canvas.SetActive(false);
     }
 
     public void Restart(){
@@ -38,4 +38,4 @@ public class PauseMenu : MonoBehaviour
     public void Options(){
       SceneManager.LoadScene("Options");
     }
-}
+}       
