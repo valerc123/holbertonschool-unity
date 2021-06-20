@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PauseMenu : MonoBehaviour
 {
@@ -24,5 +26,16 @@ public class PauseMenu : MonoBehaviour
     public void Resume(){
         script.enabled = true;
         canvas.SetActive(false);
+    }
+
+    public void Restart(){
+      SceneManager.LoadScene("Level01");
+    }
+    public void MainMenu(){
+      SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Options(){
+      SceneManager.LoadScene("Options");
     }
 }
