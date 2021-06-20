@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
     public GameObject player;
 
-    public GameObject InvertToogle;
+    
      private Transform playerTransform;     
      private float yOffset = 1.0f;
      private float zOffset = -5.0f;
