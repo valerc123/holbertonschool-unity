@@ -5438,6 +5438,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1306803340}
   turnspeed: 5
+  mouseDown: 0
+  isInverted: 0
 --- !u!4 &964030318 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: bb7af1ff296f4704c85d108c986c7d7c,
