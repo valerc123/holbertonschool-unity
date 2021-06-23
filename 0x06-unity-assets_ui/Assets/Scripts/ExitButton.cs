@@ -5,11 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class ExitButton : MonoBehaviour
 {
-    // Start is called before the first frame update
     public void Exit (){
         //UnityEditor.EditorApplication.isPlaying = false;
         Debug.Log("Exited");
-       Application.Quit();
-      
+        Application.Quit();
     }
 }

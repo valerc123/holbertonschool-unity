@@ -19,12 +19,6 @@ public class WinTrigger : MonoBehaviour
         finalTime = GameObject.Find("FinalTime");
         finalTimerText = finalTime.GetComponent<Text>();
         canvas.SetActive(false);
-
-    }
-
-    void Update()
-    {
-        
     }
     void OnTriggerEnter(Collider other){
         if (other.tag == "Player"){
@@ -35,7 +29,6 @@ public class WinTrigger : MonoBehaviour
             finalTimerText.text = PlayerPrefs.GetString("timerFormat");;
             text.fontSize = 60;
             text.color = Color.green;
-
         }
     }
 }
