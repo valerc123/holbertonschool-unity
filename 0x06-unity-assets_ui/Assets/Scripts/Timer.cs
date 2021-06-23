@@ -20,9 +20,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         timerCanvas = GameObject.Find("TimerCanvas");
-
-
-        finalTimerText = finalTime.GetComponent<Text>();
+        //finalTimerText = finalTime.GetComponent<Text>();
         col = true;
     }
 
@@ -58,7 +56,8 @@ public class Timer : MonoBehaviour
     }
 
     public void Win(){
-     finalTimerText.text = timerFormat;
-     timerCanvas.SetActive(false);
+          timerCanvas.SetActive(false);
+          PlayerPrefs.SetString("timerFormat",timerFormat);
+          //finalTimerText.text = timerFormat;
     }
 }

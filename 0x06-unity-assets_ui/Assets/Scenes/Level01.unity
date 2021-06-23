@@ -293,7 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   finalTime: {fileID: 559845446}
-  timerCanvas: {fileID: 0}
+  timerCanvas: {fileID: 1522723160}
   TimerText: {fileID: 1239386850}
   finalTimerText: {fileID: 0}
   timerFormatted: 
@@ -2459,6 +2459,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   script: {fileID: 0}
   text: {fileID: 1239386850}
+  finalTimerText: {fileID: 0}
+  finalTime: {fileID: 0}
 --- !u!1 &391970942 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 5bbd38b811260ba48bfa2081679110e9,
@@ -8824,6 +8826,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 12bef70509e03454798b3e8313fbf3ab, type: 3}
+--- !u!1 &1522723160 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6825483441566120277, guid: 4168f7ed63e2afb48ab31b8dfdffa780,
+    type: 3}
+  m_PrefabInstance: {fileID: 5907698120782087792}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1537520330
 PrefabInstance:
   m_ObjectHideFlags: 0

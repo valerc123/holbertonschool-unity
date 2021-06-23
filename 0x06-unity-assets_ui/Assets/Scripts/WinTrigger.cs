@@ -10,10 +10,14 @@ public class WinTrigger : MonoBehaviour
     public GameObject canvas;
     public Timer script;
     public Text text;
+     public Text finalTimerText;
+     public GameObject finalTime;
     void Start()
     {
         player = GameObject.Find("Player");
         canvas = GameObject.Find("WinCanvas");
+        finalTime = GameObject.Find("FinalTime");
+        finalTimerText = finalTime.GetComponent<Text>();
         canvas.SetActive(false);
 
     }
@@ -28,6 +32,7 @@ public class WinTrigger : MonoBehaviour
             script.enabled = false;
 
             canvas.SetActive(true);
+            finalTimerText.text = PlayerPrefs.GetString("timerFormat");;
             text.fontSize = 60;
             text.color = Color.green;
 
