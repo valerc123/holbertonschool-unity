@@ -9,9 +9,13 @@ public class PauseMenu : MonoBehaviour
     public GameObject canvas;
     public GameObject player;
     public Timer script;
+
+    private int scene;
     // Start is called before the first frame update
     void Start (){
+      
       script = player.GetComponent<Timer>();
+      
     }
     void Update (){
       if (Input.GetKeyDown(KeyCode.Escape)){
@@ -36,6 +40,9 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Options(){
+      scene = SceneManager.GetActiveScene().buildIndex;
+      PlayerPrefs.SetInt("previousLevel",scene);
       SceneManager.LoadScene("Options");
+      Debug.Log ("scene"+scene);
     }
 }       

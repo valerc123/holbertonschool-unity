@@ -6,7 +6,14 @@ using UnityEngine.SceneManagement;
 public class BackButton : MonoBehaviour
 {
     // Start is called before the first frame update
+    private int scene;
+     void Start()
+    {
+			scene = PlayerPrefs.GetInt("previousLevel");
+   
+    }
     public void Back (){
-      SceneManager.LoadScene("MainMenu");
+
+      SceneManager.LoadScene(scene);
     }
 }

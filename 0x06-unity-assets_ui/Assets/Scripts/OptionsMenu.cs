@@ -12,8 +12,11 @@ public class OptionsMenu : MonoBehaviour
     // Start is called before the first frame update
     //private int Inverted=0;
 
+		private int scene;
+
     void Start()
     {
+			scene = PlayerPrefs.GetInt("previousLevel");
       Toogle =  InvertToogle.GetComponent<Toggle>();
       Toogle.isOn = PlayerPrefs.GetInt("inverse") == 1 ? true : false;
     }
@@ -28,8 +31,14 @@ public class OptionsMenu : MonoBehaviour
      }
     
     public void Apply (){
-      // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-       SceneManager.LoadScene("Level01");
+			
+			SceneManager.LoadScene(scene);
+       /* if(SceneManager.GetActiveScene().buildIndex==4){
+           SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);
+        }else{
+          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }*/
+    
     }
     
 }
