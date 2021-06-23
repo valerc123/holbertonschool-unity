@@ -29,7 +29,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Restart(){
-      SceneManager.LoadScene("Level01");
+      SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void MainMenu(){
       SceneManager.LoadScene("MainMenu");

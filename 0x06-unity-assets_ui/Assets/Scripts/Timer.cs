@@ -8,13 +8,21 @@ public class Timer : MonoBehaviour
 {
 
     public  float timer;
+   public GameObject finalTime;
+
+   public GameObject timerCanvas;
     public Text TimerText;
+    public Text finalTimerText;
     public string timerFormatted;
     public string timerFormat;
 
     public bool col;
     void Start()
     {
+        timerCanvas = GameObject.Find("TimerCanvas");
+
+
+        finalTimerText = finalTime.GetComponent<Text>();
         col = true;
     }
 
@@ -41,10 +49,16 @@ public class Timer : MonoBehaviour
 
     void OnTriggerEnter(Collider other){
         if (other.tag == "winflag"){
+            Win();
             col = true;
-                    Debug.Log("winflag");
+            Debug.Log("winflag");
 
           //  TimerText.text = timerFormatted;
         }
+    }
+
+    public void Win(){
+     finalTimerText.text = timerFormat;
+     timerCanvas.SetActive(false);
     }
 }
