@@ -86,8 +86,6 @@ public class PlayerController : MonoBehaviour
         camForward = camForward.normalized;
         camRight = camRight.normalized;
     }
-
-
     void PlayerJump()
     {
         if (player.isGrounded && Input.GetButtonDown("Jump"))
@@ -96,7 +94,7 @@ public class PlayerController : MonoBehaviour
             movePlayer.y = fallVelocity;
         }
     }
-     void setGravity()
+    void setGravity()
     {      
         if (player.isGrounded)
         {
@@ -109,13 +107,4 @@ public class PlayerController : MonoBehaviour
             movePlayer.y = fallVelocity;
         }
     }
-
-  /*  public void OnCollisionEnter(Collision hit){
-        if (hit.gameObject.CompareTag("ground")){
-            isGrounded = true;
-        }
-        else {
-           isGrounded = false;
-        }
-    }*/
  }
