@@ -84,13 +84,13 @@ AnimatorController:
   m_Name: ty
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: performRun
+  - m_Name: IdleToRunning
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: performIdle
+  - m_Name: RunningToIdle
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -118,7 +118,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: performRun
+    m_ConditionEvent: IdleToRunning
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2140702544425662254}
@@ -143,7 +143,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: performIdle
+    m_ConditionEvent: RunningToIdle
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2650299691790258254}

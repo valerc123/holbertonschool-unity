@@ -44,11 +44,11 @@ public class PlayerController : MonoBehaviour
                 Input.GetKey(KeyCode.RightArrow) 
             )
         ) {
-            animator.SetBool("performRun", true);
-            animator.SetBool("performIdle", false);
+            animator.SetBool("IdleToRunning", true);
+            animator.SetBool("RunningToIdle", false);
         } else {
-            animator.SetBool("performRun", false);
-            animator.SetBool("performIdle", true);
+            animator.SetBool("IdleToRunning", false);
+            animator.SetBool("RunningToIdle", true);
         }
 
         horizontalInput = Input.GetAxis("Horizontal");
