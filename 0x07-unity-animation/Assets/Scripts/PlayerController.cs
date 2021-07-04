@@ -23,13 +23,34 @@ public class PlayerController : MonoBehaviour
 
     public CharacterController player;
     public float rotationY;
+    public GameObject ty;
+    Animator animator;
 
     void Start()
     {
-       player = GetComponent<CharacterController>();    
+       player = GetComponent<CharacterController>();
+       animator = ty.GetComponent<Animator>();
     }
     void Update()
     {
+        if ((Input.GetKey(KeyCode.W) || 
+            Input.GetKey(KeyCode.A) ||
+            Input.GetKey(KeyCode.S) ||
+            Input.GetKey(KeyCode.D) ) ||
+            (
+                Input.GetKey(KeyCode.UpArrow) ||
+                Input.GetKey(KeyCode.LeftArrow) ||
+                Input.GetKey(KeyCode.DownArrow) ||
+                Input.GetKey(KeyCode.RightArrow) 
+            )
+        ) {
+            animator.SetBool("performRun", true);
+            animator.SetBool("performIdle", false);
+        } else {
+            animator.SetBool("performRun", false);
+            animator.SetBool("performIdle", true);
+        }
+
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
         playerInput = new Vector3(horizontalInput, 0, verticalInput);
