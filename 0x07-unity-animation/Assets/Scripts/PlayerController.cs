@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-  // Start is called before the first frame update\
-   [SerializeField] private float horizontalInput;
+    [SerializeField] private float horizontalInput;
     [SerializeField] private float verticalInput;
     [SerializeField] private float gravity = 40f;
     public Camera mainCamera;
@@ -23,28 +22,30 @@ public class PlayerController : MonoBehaviour
     //public bool isGrounded = false;
 
     public CharacterController player;
+    public float rotationY;
 
     void Start()
     {
        player = GetComponent<CharacterController>();    
     }
-    // Update is called once per frame
     void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        playerInput = new Vector3( horizontalInput, 0, verticalInput);
+        playerInput = new Vector3(horizontalInput, 0, verticalInput);
         playerInput = Vector3.ClampMagnitude(playerInput, 1);
 
         movePlayer = playerInput.x * camRight + playerInput.z * camForward;
 
-        movePlayer = movePlayer * movementSpeed ;
+        movePlayer = movePlayer * movementSpeed;
 
-        setGravity ();
+        setGravity();
         PlayerJump();
         
+        player.transform.LookAt(player.transform.position + movePlayer);
+        rotationY = player.transform.eulerAngles.y;
+        player.transform.rotation = Quaternion.Euler(0, rotationY, 0);
         player.Move(movePlayer * Time.deltaTime);
-
 
         camDirection();
        
