@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public float rotationY;
     public GameObject ty;
     Animator animator;
+     private Quaternion charRotation;
 
     void Start()
     {
@@ -32,47 +33,59 @@ public class PlayerController : MonoBehaviour
        animator = ty.GetComponent<Animator>();
     }
     void Update()
-    {
-        if ((Input.GetKey(KeyCode.W) || 
-            Input.GetKey(KeyCode.A) ||
-            Input.GetKey(KeyCode.S) ||
-            Input.GetKey(KeyCode.D) ) ||
-            (
-                Input.GetKey(KeyCode.UpArrow) ||
-                Input.GetKey(KeyCode.LeftArrow) ||
-                Input.GetKey(KeyCode.DownArrow) ||
-                Input.GetKey(KeyCode.RightArrow) 
-            )
-        ) {
-            animator.SetBool("IdleToRunning", true);
-            animator.SetBool("RunningToIdle", false);
-        } else {
-            animator.SetBool("IdleToRunning", false);
-            animator.SetBool("RunningToIdle", true);
-        }
+    {  
+       
+         if ((Input.GetKey(KeyCode.W) || 
+                Input.GetKey(KeyCode.A) ||
+                Input.GetKey(KeyCode.S) ||
+                Input.GetKey(KeyCode.D) ) ||
+                (
+                    Input.GetKey(KeyCode.UpArrow) ||
+                    Input.GetKey(KeyCode.LeftArrow) ||
+                    Input.GetKey(KeyCode.DownArrow) ||
+                    Input.GetKey(KeyCode.RightArrow) 
+                )
+            ) {
+                animator.SetBool("IsRunning", true);              
+            } else {
+                animator.SetBool("IsRunning", false);         
+            } 
 
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
         playerInput = new Vector3(horizontalInput, 0, verticalInput);
+        Vector3.Normalize(playerInput);
         playerInput = Vector3.ClampMagnitude(playerInput, 1);
 
         movePlayer = playerInput.x * camRight + playerInput.z * camForward;
 
         movePlayer = movePlayer * movementSpeed;
-
+        
         setGravity();
         PlayerJump();
         
-        player.transform.LookAt(player.transform.position + movePlayer);
-        rotationY = player.transform.eulerAngles.y;
-        player.transform.rotation = Quaternion.Euler(0, rotationY, 0);
+
+        if (playerInput.magnitude != 0)
+        {
+           player.transform.LookAt(player.transform.position + movePlayer);
+           rotationY = player.transform.eulerAngles.y;
+           player.transform.rotation = Quaternion.Euler(0, rotationY, 0);
+           
+        }
+      
         player.Move(movePlayer * Time.deltaTime);
 
         camDirection();
        
-       if(transform.position.y <= -10){
-            transform.position = new Vector3(0,20,0);
+       if(transform.position.y <= -15){
+            transform.position = new Vector3(0,30,0);
+             Debug.Log("IsFalling");
+            //animator.SetBool("RunningToFalling", true);
+            animator.SetBool("JumpToFalling", true);
         }
+          
+      
+ 
     }
 
     void camDirection()
@@ -90,8 +103,13 @@ public class PlayerController : MonoBehaviour
     {
         if (player.isGrounded && Input.GetButtonDown("Jump"))
         {
+            animator.SetBool("IsJumping", true);
             fallVelocity = jumpForce;
             movePlayer.y = fallVelocity;
+            Debug.Log(animator.GetBool("IsJumping"));
+        }else {
+            animator.SetBool("IsJumping", false);
+            
         }
     }
     void setGravity()
