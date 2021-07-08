@@ -13,12 +13,12 @@ public class CutsceneController : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
-        scriptPc = player.GetComponent<PlayerController>();
+        //scriptPc = player.GetComponent<PlayerController>();
         scriptCs = gameObject.GetComponent<CutsceneController>();
     }
     public void activeComponents(){
         mainCamera.SetActive(true);
-        scriptPc.enabled = true;
+        //scriptPc.enabled = true;
         timerCanvas.SetActive(true);
         scriptCs.enabled = false;
         gameObject.SetActive(false);

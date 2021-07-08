@@ -12,7 +12,7 @@ public class CameraController : MonoBehaviour
     private float vRotationModifier;
     public GameObject player;
     private Transform playerTransform;     
-    private float yOffset = 1.0f;
+    private float yOffset = 3.0f;
     private float zOffset = -5.0f;
     private Vector3 offset;
     public float turnspeed = 5.0f;
