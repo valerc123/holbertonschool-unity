@@ -45,7 +45,7 @@ public class CameraController : MonoBehaviour
             transform.position = playerTransform.position + rotation * offset;
             Debug.Log(isInverted );
         }else{
-            offset = Quaternion.AngleAxis(Input.GetAxis("Mouse X")*turnspeed, Vector3.up)*offset;
+           // offset = Quaternion.AngleAxis(Input.GetAxis("Mouse X")*turnspeed, Vector3.up)*offset;
             transform.position = playerTransform.position + offset;
         }
         transform.LookAt(playerTransform.position);

@@ -12,6 +12,15 @@ public class WinTrigger : MonoBehaviour
     public Text text;
      public Text finalTimerText;
      public GameObject finalTime;
+
+     public GameObject soundBGN;
+
+    private AudioSource BGNAudioSource;
+    
+    public GameObject soundvictory;
+
+    private AudioSource VictoryAudioSource;
+    
     void Start()
     {
         player = GameObject.Find("Player");
@@ -19,12 +28,17 @@ public class WinTrigger : MonoBehaviour
         finalTime = GameObject.Find("FinalTime");
         finalTimerText = finalTime.GetComponent<Text>();
         canvas.SetActive(false);
+        BGNAudioSource = soundBGN.GetComponent<AudioSource>();
+        VictoryAudioSource = soundvictory.GetComponent<AudioSource>();
+       
+
     }
     void OnTriggerEnter(Collider other){
         if (other.tag == "Player"){
             script = player.GetComponent<Timer>();
-            script.enabled = false;
-
+            script.enabled = false;            
+            BGNAudioSource.Stop();
+            VictoryAudioSource.Play();
             canvas.SetActive(true);
             finalTimerText.text = PlayerPrefs.GetString("timerFormat");;
             text.fontSize = 60;

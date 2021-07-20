@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {  
        
-         if ((Input.GetKey(KeyCode.W) || 
+        if (  (Input.GetKey(KeyCode.W) || 
                 Input.GetKey(KeyCode.A) ||
                 Input.GetKey(KeyCode.S) ||
                 Input.GetKey(KeyCode.D) ) ||
@@ -45,11 +45,11 @@ public class PlayerController : MonoBehaviour
                     Input.GetKey(KeyCode.DownArrow) ||
                     Input.GetKey(KeyCode.RightArrow) 
                 )
-            ) {
-                animator.SetBool("IsRunning", true);              
-            } else {
-                animator.SetBool("IsRunning", false);         
-            } 
+        ) {
+            animator.SetBool("IsRunning", true);              
+        } else {
+            animator.SetBool("IsRunning", false);         
+        } 
 
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
