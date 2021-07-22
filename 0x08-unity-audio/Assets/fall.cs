@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,7 +25,7 @@ public class fall : MonoBehaviour
       
         if(transform.position.y <= -15){
             transform.position = new Vector3(-1,20,-2);
-            sceneAudioSource.clip = sceneClips[1];
+             sceneAudioSource.clip = sceneClips[1];
              sceneAudioSource.Play();
              Debug.Log("IsFalling");
             //animator.SetBool("RunningToFalling", true);

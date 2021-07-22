@@ -46,7 +46,7 @@ public class PauseMenu : MonoBehaviour
     }else{
       unpaused.TransitionTo(.01f);
     }
-  }
+  } 
   public void Resume(){
     script.enabled = true;
     canvas.SetActive(false);
