@@ -831,6 +831,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InvertToogle: {fileID: 1313820969}
   Toogle: {fileID: 0}
+  soundSlider: {fileID: 1906619514}
+  soundSliderSFX: {fileID: 1546507961}
+  soundSliderValueSFX: 0
+  soundSliderValue: 0
 --- !u!1 &776667804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1730,10 +1734,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 450968472}
   m_HandleRect: {fileID: 201875340}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2205,10 +2209,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1406292666}
   m_HandleRect: {fileID: 465254252}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

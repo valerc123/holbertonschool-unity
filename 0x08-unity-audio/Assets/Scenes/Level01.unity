@@ -1114,6 +1114,7 @@ GameObject:
   m_Component:
   - component: {fileID: 163939020}
   - component: {fileID: 163939021}
+  - component: {fileID: 163939022}
   m_Layer: 0
   m_Name: CheeryMonday
   m_TagString: Untagged
@@ -1232,6 +1233,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &163939022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163939019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d842d63f0e50da4aa8a9c46708e1c37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundSound: 0
+  mixerbg: {fileID: 24100000, guid: 4d035e34a036375448ed58fa4e10c05e, type: 2}
+  SFXSound: 0
+  SFXmixer: {fileID: 24100000, guid: 4d035e34a036375448ed58fa4e10c05e, type: 2}
 --- !u!1 &166820202
 GameObject:
   m_ObjectHideFlags: 0
