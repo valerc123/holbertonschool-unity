@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Audio;
 # if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -11,13 +10,13 @@ using UnityEditor;
 
 public class PauseMenu : MonoBehaviour
 {
-  public AudioMixerSnapshot paused;
-  public AudioMixerSnapshot unpaused;
+ 
 
   public GameObject canvas;
   public GameObject player;
   public Timer script;
   private int scene;
+  private bool active = false;
   void Start (){
     script = player.GetComponent<Timer>();
   }
@@ -27,26 +26,12 @@ public class PauseMenu : MonoBehaviour
     }
   }
 
-  void TransitionTo (){
-
-  }
-
-
-
   public void Pause(){
     script.enabled = false;
-    canvas.SetActive(true);
+    active = !active;
+    canvas.SetActive(active);
     Time.timeScale = Time.timeScale == 0 ? 1 : 0;
-    Lowpass();
   }
-
-  void Lowpass(){
-    if (Time.timeScale == 0){
-      paused.TransitionTo(.01f);
-    }else{
-      unpaused.TransitionTo(.01f);
-    }
-  } 
   public void Resume(){
     script.enabled = true;
     canvas.SetActive(false);

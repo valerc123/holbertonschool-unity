@@ -30,7 +30,6 @@ public class WinTrigger : MonoBehaviour
         canvas.SetActive(false);
         BGNAudioSource = soundBGN.GetComponent<AudioSource>();
         VictoryAudioSource = soundvictory.GetComponent<AudioSource>();
-       
 
     }
     void OnTriggerEnter(Collider other){
