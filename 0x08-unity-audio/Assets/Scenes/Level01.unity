@@ -5229,7 +5229,7 @@ MonoBehaviour:
   stereoSpeakerModeEnabled: 0
   recorderSeamless: 0
   recorderSourceTag: Untagged
-  recorderFoldout: 0
+  recorderFoldout: 1
 --- !u!81 &765196026
 AudioListener:
   m_ObjectHideFlags: 0
