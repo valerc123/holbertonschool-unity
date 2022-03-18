@@ -44,4 +44,7 @@ public class OptionsMenu : MonoBehaviour
   public void Apply (){
     SceneManager.LoadScene(scene);
   }
+  public void KeyBindings (){
+    SceneManager.LoadScene("KeyBindings");
+  }
 }
